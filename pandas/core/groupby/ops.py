@@ -384,8 +384,6 @@ class WrappedCythonOp:
             values = values.astype(np.float32)
 
         if self.how in ["any", "all"]:
-            if mask is None:
-                mask = isna(values)
             if dtype == object:
                 if kwargs["skipna"]:
                     # GH#37501: don't raise on pd.NA when skipna=True
