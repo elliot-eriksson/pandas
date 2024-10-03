@@ -371,6 +371,10 @@ class WrappedCythonOp:
 
         is_datetimelike = dtype.kind in "mM"
 
+        if self.how in ["any", "all"]:
+            if mask is None:
+                mask = isna(values)
+
         if is_datetimelike:
             values = values.view("int64")
             is_numeric = True
